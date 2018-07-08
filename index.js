@@ -42,13 +42,13 @@ exports.parseFields = function(fields) {
   for(var fieldname in fields) {
     let field, fieldType;
     let fieldDef = fields[fieldname];
-    if(fieldDef.graphqlExclude) {
-      continue;
-    }
     let isArray = false;
     if(fieldDef instanceof Array) {
       isArray = true;
       fieldDef = fieldDef[0];
+    }
+    if(fieldDef.graphqlExclude) {
+      continue;
     }
     switch(fieldDef.type) {
       case String:
